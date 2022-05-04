@@ -1,0 +1,42 @@
+{
+  "name": "serenityjs-example",
+  "version": "1.0.0",
+  "description": "Example usage of SerenityJS test framework",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "serenity-bdd update",
+    "test": "yarn test:execute && yarn test:report",
+    "test:execute": "wdio wdio.conf.ts",
+    "test:report": "serenity-bdd run --features ./features"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rob-Doherty/serenityjs-example.git"
+  },
+  "author": "Rob Doherty-Kelly",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Rob-Doherty/serenityjs-example/issues"
+  },
+  "homepage": "https://github.com/Rob-Doherty/serenityjs-example#readme",
+  "devDependencies": {
+    "@cucumber/cucumber": "^7.3.2",
+    "@serenity-js/console-reporter": "^3.0.0-rc.16",
+    "@serenity-js/core": "^3.0.0-rc.16",
+    "@serenity-js/cucumber": "^3.0.0-rc.16",
+    "@serenity-js/serenity-bdd": "^3.0.0-rc.16",
+    "@serenity-js/webdriverio": "^3.0.0-rc.16",
+    "@types/node": "^17.0.31",
+    "@wdio/cli": "^7.19.6",
+    "@wdio/cucumber-framework": "^7.19.5",
+    "@wdio/local-runner": "^7.19.5",
+    "@wdio/reporter": "^7.19.7",
+    "@wdio/spec-reporter": "^7.19.5",
+    "@wdio/types": "^7.19.5",
+    "chromedriver": "^101.0.0",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.4",
+    "wdio-chromedriver-service": "^7.3.2",
+    "webdriverio": "^7.19.7"
+  }
+}
