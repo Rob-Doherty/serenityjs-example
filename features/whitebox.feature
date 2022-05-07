@@ -10,8 +10,8 @@ Feature: WhiteBox IT Solutions Homepage
     When Jane opens the WhiteBox IT Solutions homepage
     Then Jane sees the WhiteBox IT Solutions homepage
 
-#  Scenario: Customer selects the github link
-#
-#    Given Customer is on the WhiteBox IT Solutions homepage
-#    When Customer selects the github link
-#    Then the Github page displays
+  Scenario: Customer selects the github link
+
+    Given Sean opens the WhiteBox IT Solutions homepage
+    When Sean clicks the GitHub link
+    Then Sean sees the GitHub page
