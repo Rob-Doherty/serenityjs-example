@@ -1,7 +1,7 @@
 import { Actor, actorCalled } from '@serenity-js/core';
 import { defineParameterType, Given, When, Then } from '@cucumber/cucumber';
 import { Ensure, includes, equals } from '@serenity-js/assertions';
-import { Navigate, Page, PageElement, Text, By } from '@serenity-js/web';
+import { Navigate, Page, PageElement, Text, By, Click } from '@serenity-js/web';
 
 defineParameterType({
     regexp: /[A-Z][a-z]+/,
@@ -23,6 +23,16 @@ When('{actor} opens the WhiteBox IT Solutions homepage', async (actor: Actor) =>
     )
 });
 
+When('{actor} clicks the GitHub link', async (actor: Actor) => {
+    const githubLink = () =>
+        PageElement.located(By.xpath('//h3/*[text()="Github"]'))
+            .describedAs('GitHub link')
+
+    await actor.attemptsTo(
+        Click.on(githubLink()),
+    )
+});
+
 Then('{actor} sees the WhiteBox IT Solutions homepage', async (actor: Actor) => {
     const header = () =>
         PageElement.located(By.css('#headerwrap'))
@@ -31,5 +41,12 @@ Then('{actor} sees the WhiteBox IT Solutions homepage', async (actor: Actor) => 
     await actor.attemptsTo(
         Ensure.that(Page.current().title(), includes('WhiteBox')),
         Ensure.that(Text.of(header()).trim(), equals('WhiteBox\nIT Solutions')),
+    )
+});
+
+Then('{actor} sees the GitHub page', async (actor: Actor) => {
+    await actor.attemptsTo(
+        Ensure.that(Page.current().title(), includes('GitHub')),
+        Ensure.that(Page.current().url().pathname, includes('github.com/Rob-Doherty')),
     )
 });
